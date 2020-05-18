@@ -16,5 +16,5 @@ All variables are fairly self-explanatory.
 
 The plots folder has some summary plots of the data. 
 
-Map of counter locations locations. Green have been sucessfully scrapped, red have not (most of these are counter that are no longer in use).
+Map of counter locations locations. Green have been sucessfully scrapped, fully red points have not (most of these are counter that are no longer in use).
 ![alt text](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/road_location_with_scraped_data3.png).
