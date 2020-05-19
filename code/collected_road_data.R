@@ -10,13 +10,6 @@ gc()
 
 source('./code/_project_setup.R')
 
-library(tidyverse)
-library(lubridate)
-library(cowplot) # for nice plots
-library(rvest)
-library(git2r)
-library(zip)
-
 pull(repo = getwd())
 
 nra_combine_info <- read_csv('./data/nra_combine_info_full.csv')
@@ -206,7 +199,8 @@ add(repo = getwd(), path = "./data/all_daily_road_wGPS.csv")
 add(repo = getwd(), path = "./data/nra_combine_info_full.csv")
 add(repo = getwd(), path = "./data/roads_offical_gps_locations.csv")
 # Commit the file
-commit( repo = getwd(), message = paste0("Update as at: ", Sys.time()))
+try(commit( repo = getwd(), message = paste0("Update as at: ", Sys.time())))
+
 push(object = getwd(), 
      credentials = cred_user_pass( 
        username = "davidjposullivan@gmail.com", 
