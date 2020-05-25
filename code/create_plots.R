@@ -9,7 +9,7 @@ rm(list = ls()) # tidy work space
 gc()
 
 # libraries, source files and data ---------------
-source('./code/_project_setup.r')
+source('./code/_project_setup.R')
 
 # save the search results
 # search_df <- read_csv('./data/search_results_info.csv')
@@ -21,17 +21,10 @@ all_daily_ts <- read_csv('./data/all_daily_road_wGPS.csv')
 pull(repo = getwd())
 
 
-# breakdown by day and pre-post lockdown ----------------------------------
-
-
 # plot some data ----------------------------------------------------------
 
-# how complete is the data?
-# all_hourly_ts %>% count(road_id) %>% 
-  ggplot(aes(n)) + geom_density()
-
 set.seed(1111)
-sample_road_id <- all_hourly_ts %>% count(road_id) %>% sample_n(4)
+sample_road_id <- all_hourly_ts %>% count(road_id) %>% sample_n(3)
 sample_road_id
 
 p1 <- all_hourly_ts %>% filter(road_id %in% sample_road_id$road_id) %>% 
@@ -66,7 +59,7 @@ p3 <- all_hourly_ts %>%
   # geom_hline(yintercept = 0, color = 'red', size = 2) + 
   scale_colour_viridis_d() + 
   theme_classic()
-p3
+# p3
 
 p4 <- all_hourly_ts %>%
   group_by(date) %>% 
@@ -145,18 +138,22 @@ ggsave(filename = './plots/days_of_week_breakdown.png', plot = p5)
 # ggsave(filename = './plots/road_location_with_scraped_data3.png', plot = p6)
 
 # update github -----------------------------------------------------------
-
+getwd()
+setwd('/home/rstudio/TII_road_data')
 add(repo = getwd(), path = "./plots/selected_roads_ts.png")
 add(repo = getwd(), path = "./plots/days_of_week_breakdown.png")
 add(repo = getwd(), path = "./plots/all_roads_weekly_daily_ts.png")
 
 # Commit the file
-commit( repo = getwd(), message = paste0("Update as at: ", Sys.time()))
+try(commit( repo = getwd(), message = paste0("Update as at: ", Sys.time())))
 push(object = getwd(), 
      credentials = cred_user_pass( 
        username = "davidjposullivan@gmail.com", 
        password = "pN4rE05tfaTP"  # BE CAREFUL!!
      ))
+
+
+cat('Finished Job', file = 'plotting.txt')
 # tidy works space when finished -----------------
 
 rm(list = ls()) # tidy work space

@@ -10,8 +10,6 @@ gc()
 
 source('./code/_project_setup.R')
 
-pull(repo = getwd())
-
 nra_combine_info <- read_csv('./data/nra_combine_info_full.csv')
 offical_gps_df <- read_csv('./data/roads_offical_gps_locations.csv')
 
@@ -26,11 +24,11 @@ scraped_data_df <-
 
 # create a list of files that I do have
 
-date <- Sys.Date() # grab todays date
+todays_date <- Sys.Date() # grab todays date
 search_df <-
   expand.grid(
     # we want to go 120 back for each road
-    dates = as.Date(date, format="%Y-%m-%d") - duration(1:7, 'days'),
+    dates = as.Date(todays_date, format="%Y-%m-%d") - duration(1:7, 'days'),
     road_id = offical_gps_df$road_id,
     stringsAsFactors = FALSE) %>% 
   as_tibble %>% 
@@ -62,7 +60,7 @@ for(row_i in (1:nrow(search_df))){ # row_i = 1
   # do we need to slow it down for some reason?
   # Sys.sleep(5)
   
-  if(row_i %% 10 == 0) {
+  if(row_i %% 100 == 0) {
     cat(sep = "", '###########################\n')
     cat(sep = "", 'Currently ', round((row_i/nrow(search_df))*100, 2),'% done.\n')
     cat(sep = "", 'Currently ', round((sum(search_df$successful[1:row_i])/row_i)*100, 2),'% of roads and dates successfully accessed!\n')
@@ -80,8 +78,8 @@ file_names <-
   (function(x=.)(x[grepl(x, pattern = '.csv')]))
 
 # save todays search in a file
-zip::zipr(zipfile = paste0('./data/road_data_full_', date,'.zip'), files = file_names)
-write_csv(x = search_df, path = paste0('./data/search_results_info_',date,'.csv'))
+zip::zipr(zipfile = paste0('./data/full_data_zipped/road_data_full_', todays_date,'.zip'), files = file_names)
+write_csv(x = search_df, path = paste0('./data/search_results_info_',todays_date,'.csv'))
 
 # summary file of what each file contain (handy for improving the scraper)
 read_nra_df <- tibble(file_names = file_names, successful = NA,
@@ -131,6 +129,7 @@ write_csv(all_hourly_ts, './data/all_hourly_road_wGPS_today.csv')
 nra_combine_info_full <- bind_rows(nra_combine_info,read_nra_df) %>% 
   filter(successful == TRUE) %>% 
   distinct()
+
 write_csv(x = nra_combine_info_full, './data/nra_combine_info_full.csv')
 
 
@@ -180,26 +179,27 @@ write_csv(all_daily_ts, path = './data/all_daily_road_wGPS_today.csv')
 new_road_daily <- read_csv(file = './data/all_daily_road_wGPS_today.csv')
 old_road_daily <- read_csv(file = './data/all_daily_road_wGPS.csv')
 
-full_road_daily <- bind_rows(old_road_daily, new_road_daily)
+full_road_daily <- bind_rows(old_road_daily, new_road_daily) %>% distinct()
 write_csv(x = full_road_daily, path = './data/all_daily_road_wGPS.csv')
 
 # grab the old files
 new_road_hourly <- read_csv(file = './data/all_hourly_road_wGPS_today.csv')
 old_road_hourly <- read_csv(file = './data/all_hourly_road_wGPS.csv')
 
-full_road_hourly <- bind_rows(old_road_hourly, new_road_hourly)
+full_road_hourly <- bind_rows(old_road_hourly, new_road_hourly) %>% distinct()
 write_csv(x = full_road_hourly, path = './data/all_hourly_road_wGPS.csv')
 # combine the data together
 
-
+unlink(file_names)
+gc()
 # push to github ----------------------------------------------------------
 
 add(repo = getwd(), path = "./data/all_hourly_road_wGPS.csv")
 add(repo = getwd(), path = "./data/all_daily_road_wGPS.csv")
 add(repo = getwd(), path = "./data/nra_combine_info_full.csv")
-add(repo = getwd(), path = "./data/roads_offical_gps_locations.csv")
+add(repo = getwd(), path = paste0('./data/full_data_zipped/road_data_full_', todays_date,'.zip'))
 # Commit the file
-try(commit( repo = getwd(), message = paste0("Update as at: ", Sys.time())))
+try(commit( repo = getwd(), message = paste0("Updated @ ", Sys.time())))
 
 push(object = getwd(), 
      credentials = cred_user_pass( 
