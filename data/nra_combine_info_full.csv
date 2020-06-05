@@ -49670,3 +49670,5 @@ file_names,successful,no_col,no_row,no_numeric,no_na
 ./data/ind_road_data//NRA_000000202639_2020-06-04.csv,TRUE,5,24,1,0
 ./data/ind_road_data//NRA_000000208001_2020-06-03.csv,TRUE,5,24,1,0
 ./data/ind_road_data//NRA_000000208001_2020-06-04.csv,TRUE,5,24,1,0
+./data/ind_road_data//NRA_000000001182_2020-06-04.csv,TRUE,5,24,1,0
+./data/ind_road_data//NRA_000000202639_2020-06-03.csv,TRUE,5,24,1,0
