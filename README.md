@@ -2,7 +2,7 @@
 
 Scrapped from the following website: [here](https://www.nratrafficdata.ie/c2/gmapbasic.asp?sgid=ZvyVmXU8jBt9PJE$c7UXt6).
 
-This repo should, all going well, update automatically daily with the lates data.
+This repo should, all going well, update automatically daily with the latest data.
 
 The data folder has: 
 
