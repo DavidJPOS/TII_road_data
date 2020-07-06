@@ -17,7 +17,7 @@ All variables are fairly self-explanatory.
 The plots folder has some summary plots of the data. 
 
 Map of counter locations locations. Green have been sucessfully scrapped, fully red points have not (most of these are counter that are no longer in use).
-![alt text](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/road_location_with_scraped_data3.png).
+![the map](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/road_location_with_scraped_data3.png).
 
 The daily traffic counts over the last few months:
-![alt text](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/daily_road_traffic_wWeekDay.png).
+![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/daily_road_traffic_wWeekDay.png).
