@@ -21,3 +21,11 @@ Map of counter locations locations. Green have been sucessfully scrapped, fully 
 
 The daily traffic counts over the last few months:
 ![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/daily_road_traffic_wWeekDay.png).
+
+
+The daily traffic counts over the last few months for the local lockdown counties:
+![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/daily_road_traffic_wWeekDay_local.png).
+
+
+The daily traffic counts over the last few months for the local lock counties for the last few weeks:
+![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/daily_road_traffic_wWeekDay_local_recent.png).
