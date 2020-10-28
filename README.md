@@ -20,6 +20,9 @@ Map of counter locations locations. Green have been sucessfully scrapped, fully 
 ![the map](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/road_location_with_scraped_data3.png).
 
 The daily traffic counts over the last few months:
+![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/total_traffic_weekly_pc.png).
+
+The daily traffic counts over the last few months:
 ![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/daily_road_traffic_wWeekDay.png).
 
 
