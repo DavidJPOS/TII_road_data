@@ -19,7 +19,7 @@ The plots folder has some summary plots of the data.
 Map of counter locations locations. Green have been sucessfully scrapped, fully red points have not (most of these are counter that are no longer in use).
 ![the map](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/road_location_with_scraped_data3.png).
 
-The daily traffic counts over the last few months:
+The weekly change in traffic over the last few months (using the 3rd of Feb as the baseline reference day):
 ![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/total_traffic_weekly_pc.png).
 
 The daily traffic counts over the last few months:
