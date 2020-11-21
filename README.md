@@ -19,16 +19,10 @@ The plots folder has some summary plots of the data.
 Map of counter locations locations. Green have been sucessfully scrapped, fully red points have not (most of these are counter that are no longer in use).
 ![the map](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/road_location_with_scraped_data3.png).
 
-The weekly change in traffic over the last few months (using the 3rd of Feb as the baseline reference day):
-![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/total_traffic_weekly_pc.png).
-
 The daily traffic counts over the last few months:
 ![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/daily_road_traffic_wWeekDay.png).
 
+The weekly traffic counts over the last few months for NI crossing roads:
+![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/weekly_NI_traffic.png).
 
-The daily traffic counts over the last few months for the local lockdown counties:
-![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/daily_road_traffic_wWeekDay_local.png).
 
-
-The daily traffic counts over the last few months for the local lock counties for the last few weeks:
-![the time-series](https://github.com/DavidJPOS/TII_road_data/blob/master/plots/daily_road_traffic_wWeekDay_local_recent.png).
